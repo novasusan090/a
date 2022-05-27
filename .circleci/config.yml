@@ -4,7 +4,7 @@ jobs:
   build:
     machine:
       image: ubuntu-1604-cuda-10.1:201909-23
-    parallelism: 10
+    parallelism: 2
     resource_class: gpu.nvidia.medium
     steps:
       - run: nvidia-smi
